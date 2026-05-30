@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, Minus, HelpCircle, Sparkles } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -10,24 +10,24 @@ interface FAQItem {
 
 const faqList: FAQItem[] = [
   {
-    question: "Is treatment painless?",
-    answer: "Yes, absolutely! We prioritize patient comfort above all else. We utilize specialized computerized micro-needle injections that deliver local anesthesia painlessly, laser-assisted surgical cutters, and advanced sedation options to make your treatments entirely comfortable and anxiety-free.",
+    question: "How long does waterproofing last?",
+    answer: "Standard polymer-acrylic treatments typically last 5 to 7 years, whereas premium polyurethanes (PU) and crystalline pressure injections are engineered to easily last 10 to 15+ years. Our premium services come backed by a legally binding written warranty certificate (5, 10, or 15 years) ensuring lifetime protection.",
   },
   {
-    question: "Do you offer same-day treatment?",
-    answer: "Yes, we do. For treatments like single-sitting root canals, crown cementations, and emergency extractions, we carry out diagnostics and treatment in the exact same visit to respect your time.",
+    question: "What is terrace waterproofing cost?",
+    answer: "Waterproofing costs depend on the existing surface damage and choice of materials. Standard polymer-acrylic coatings range between ₹40 to ₹60 per sq. ft., whereas heavy-duty multi-layer elastomeric PU membrane treatments (with glass-fiber mesh) range from ₹80 to ₹125 per sq. ft. We provide completely transparent, itemized free quotes with no hidden charges.",
   },
   {
-    question: "Are aligners available?",
-    answer: "Yes! We are certified providers of premium, invisible clear aligners. We take a complete 3D intraoral digital scan of your mouth and map out your progressive alignment journey on screen before custom-printing your thermoplastic alignment trays.",
+    question: "Can leakage be permanently stopped?",
+    answer: "Yes, absolutely! Leakages can be permanently cured through correct engineering diagnostics. By locating the root source with thermal cameras, pressure-injecting deep crystalline active grouting into structure honeycombs, and coating with high-flexibility elastomeric membranes, we stop active ingress forever.",
   },
   {
-    question: "Do you accept emergency appointments?",
-    answer: "Yes, we always reserve emergency priority slots everyday. If you are experiencing acute thumping pain, dental fractures, a knocked-out tooth, or a damaged bridge/cap, call us directly at 9970418588 to secure a same-day priority appointment.",
+    question: "Which waterproofing chemicals are used?",
+    answer: "We use only certified, high-performance chemicals from industry leaders like Dr. Fixit, Sika, Fosroc, Laticrete, and Asian Paints SmartCare. This includes advanced elastomeric liquid polyurethanes, crystal pore-blockers, expansive PU joint sealants, and non-toxic food-grade epoxies for water tanks.",
   },
   {
-    question: "What are the payment options?",
-    answer: "We offer multiple payment modes for your convenience: Cash, UPI, Debit Cards, Credit Cards, and corporate dental insurance options. For major restorative treatments like Implants and Aligners, we also provide 0% interest monthly EMI options.",
+    question: "How long does the process take?",
+    answer: "A standard terrace, roof, or wet-area waterproofing project takes between 3 to 5 working days. This timeframe covers high-pressure concrete washing, V-groove crack filling and curing, multi-layer coating intervals, and a rigorous 48-hour physical water ponding validation to verify complete waterproofing before handover.",
   },
 ];
 
@@ -39,21 +39,20 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-slate-50 dark:bg-brand-dark">
+    <section id="faq" className="py-24 bg-brand-lightBg dark:bg-brand-navy">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-sm font-bold uppercase tracking-wider text-brand-blue">
-            Common Inquiries
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-dark dark:text-white">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Got Questions?</span>
+          </div>
+          <h2 className="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy dark:text-white leading-tight">
             Frequently Asked <br />
-            <span className="bg-gradient-to-r from-brand-blue to-cyan-500 bg-clip-text text-transparent">
-              Questions
-            </span>
+            <span className="bg-gradient-to-r from-brand-orange to-red-500 bg-clip-text text-transparent">Information & Answers</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
-            Have questions about dental procedures, costs, or appointments? Explore our answers below.
+          <p className="text-base text-slate-500 dark:text-slate-400 font-medium">
+            Explore our clear, engineered explanations regarding waterproofing costs, chemical brands, timelines, and guarantees.
           </p>
         </div>
 
@@ -64,29 +63,29 @@ export default function FAQ() {
             return (
               <div
                 key={idx}
-                className="glass-panel rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300"
+                className="glass-panel rounded-[24px] border border-slate-200 dark:border-brand-navyLight overflow-hidden transition-all duration-300"
               >
                 {/* Accordion Trigger */}
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full py-5 px-6 sm:px-8 flex items-center justify-between gap-4 text-left font-serif text-base sm:text-lg font-bold text-brand-dark dark:text-white hover:text-brand-blue dark:hover:text-sky-400 transition-colors duration-300"
+                  className="w-full py-5 px-6 sm:px-8 flex items-center justify-between gap-4 text-left font-outfit text-base sm:text-lg font-extrabold text-brand-navy dark:text-white hover:text-brand-orange dark:hover:text-brand-orange transition-colors duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <HelpCircle className="w-5 h-5 text-brand-blue flex-shrink-0" />
+                    <HelpCircle className="w-5 h-5 text-brand-orange flex-shrink-0" />
                     <span>{item.question}</span>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-500 dark:text-slate-400 flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-brand-navyLight flex items-center justify-center text-slate-500 dark:text-slate-400 flex-shrink-0">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
 
                 {/* Accordion Body */}
                 <div
-                  className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                    isOpen ? "max-h-[300px] border-t border-slate-100 dark:border-slate-800/80" : "max-h-0"
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOpen ? "max-h-[350px] border-t border-slate-200 dark:border-brand-navyLight" : "max-h-0"
                   }`}
                 >
-                  <div className="py-5 px-6 sm:px-8 text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+                  <div className="py-5 px-6 sm:px-8 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">
                     {item.answer}
                   </div>
                 </div>

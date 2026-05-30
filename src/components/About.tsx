@@ -1,106 +1,121 @@
 "use client";
 
 import React from "react";
-import { Shield, Sparkles, Star, Users } from "lucide-react";
+import { Shield, Award, ClipboardCheck, ArrowRight, MessageCircle } from "lucide-react";
+import { whatsappLink } from "@/config/whatsapp";
 
 export default function About() {
-  const highlights = [
+  const warranties = [
     {
-      icon: <Sparkles className="w-5 h-5" />,
-      title: "Modern Equipment",
-      description: "State-of-the-art 3D intraoral scanners and digital x-rays for ultra-precise diagnostics.",
+      period: "5 Years",
+      title: "Standard Protection",
+      coverage: "Crack filling, bathroom joints, and minor wall seepage treatments.",
+      chemicalType: "Acrylic polymer modified coatings & professional sealants."
     },
     {
-      icon: <Shield className="w-5 h-5" />,
-      title: "Sterilized Environment",
-      description: "Class-B autoclave sterilization conforming to rigorous international safety standards.",
+      period: "10 Years",
+      title: "Premium Protection",
+      coverage: "Rooftops, terraces, water tanks, and deep parapet masonry seals.",
+      chemicalType: "Polyurethane (PU) liquid membrane & crystalline pressure injection."
     },
     {
-      icon: <Users className="w-5 h-5" />,
-      title: "Experienced Specialists",
-      description: "Led by highly skilled implantologists, orthodontists, and cosmetic dental surgeons.",
-    },
-    {
-      icon: <Star className="w-5 h-5" />,
-      title: "Personalized Treatment Plans",
-      description: "Tailored procedures designed specifically for your lifestyle and aesthetic goals.",
-    },
+      period: "15 Years",
+      title: "Ultra Protection",
+      coverage: "Complete building structural sealing, heavy-duty app bituminous torch membrane.",
+      chemicalType: "Advanced multi-tier hybrid polyurethane coatings & imported geo-textiles."
+    }
   ];
 
   return (
-    <section id="about" className="py-24 bg-white dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="warranty" className="py-24 bg-brand-navyDark relative overflow-hidden">
+      {/* Decorative background grid and blurs */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#172a45_1px,transparent_1px),linear-gradient(to_bottom,#172a45_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Copy & Highlights */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4">
-              <span className="text-sm font-bold uppercase tracking-wider text-brand-blue">
-                Discover Dentazone
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-dark dark:text-white leading-[1.15]">
-                Redefining the Dental <br />
-                <span className="bg-gradient-to-r from-brand-blue to-cyan-500 bg-clip-text text-transparent">
-                  Clinic Experience
-                </span>
-              </h2>
+          {/* Left Column: Headline, Copy & Shield */}
+          <div className="lg:col-span-6 space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider">
+              <Shield className="w-3.5 h-3.5 animate-pulse" />
+              <span>Written Peace of Mind Guarantee</span>
             </div>
             
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-              Dentazone combines advanced digital technology, expert dental care, and a patient-first approach to create healthy, confident smiles in a comfortable and modern luxury environment. We view oral healthcare as an art and a science, delivering flawless, painless treatments tailored to each unique profile.
+            <h2 className="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Long-Lasting <br />
+              <span className="bg-gradient-to-r from-brand-orange to-red-500 bg-clip-text text-transparent">Waterproofing Protection</span>
+            </h2>
+
+            <p className="text-base text-slate-300 leading-relaxed font-semibold">
+              Every leakage treatment is engineered for structural durability. We don&apos;t use temporary quick-fixes; we apply premium, multi-tiered structural barriers backed by a comprehensive, legally-binding written warranty card.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-              {highlights.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex gap-4 p-5 rounded-2xl border border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30 hover:border-brand-blue/30 dark:hover:border-brand-blue/20 transition-colors duration-300"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-lightBlue/60 dark:bg-brand-blue/10 border border-brand-blue/10 flex items-center justify-center text-brand-blue">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-brand-dark dark:text-white mb-1.5">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            {/* Checklist items */}
+            <div className="space-y-3 pt-2 text-slate-300 font-semibold text-sm">
+              <div className="flex items-center gap-3">
+                <ClipboardCheck className="w-5 h-5 text-brand-orange flex-shrink-0" />
+                <span>Legally binding written warranty certificates</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <ClipboardCheck className="w-5 h-5 text-brand-orange flex-shrink-0" />
+                <span>Free yearly moisture visual checkups</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <ClipboardCheck className="w-5 h-5 text-brand-orange flex-shrink-0" />
+                <span>Covers both labor & premium raw chemicals</span>
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-xs font-extrabold uppercase tracking-wider text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg hover:scale-[1.02] active:scale-95 transition-all duration-300 group"
+              >
+                <MessageCircle className="w-4.5 h-4.5 fill-white stroke-none" />
+                Claim Your Free Quote
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Premium Visual Layout */}
-          <div className="lg:col-span-5 relative mt-8 lg:mt-0">
-            {/* Visual background frame */}
-            <div className="absolute -top-4 -left-4 w-72 h-72 bg-gradient-to-tr from-brand-blue to-cyan-400 opacity-20 rounded-full blur-3xl z-0" />
-            <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-brand-gold opacity-10 rounded-full blur-3xl z-0" />
-            
-            <div className="relative z-10 rounded-[32px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl aspect-square sm:aspect-[4/5] lg:aspect-square">
-              <img
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800"
-                alt="Modern Dentazone Clinic Environment"
-                className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              
-              {/* Overlay trust badge inside image */}
-              <div className="absolute bottom-6 left-6 right-6 glass-panel py-4 px-6 rounded-2xl shadow-glass flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold">
-                  ✓
+          {/* Right Column: Premium Warranty Shield Cards */}
+          <div className="lg:col-span-6 grid grid-cols-1 gap-6">
+            {warranties.map((w, idx) => (
+              <div
+                key={idx}
+                className="glass-card p-6 rounded-[28px] border border-brand-navyLight bg-brand-navy/40 relative overflow-hidden flex flex-col sm:flex-row gap-5 items-start sm:items-center hover:border-brand-orange/30 group transition-all duration-500"
+              >
+                {/* Visual glow background inside cards */}
+                <div className="absolute -top-12 -right-12 w-28 h-28 bg-brand-orange/5 rounded-full blur-2xl group-hover:bg-brand-orange/10 transition-colors duration-500" />
+                
+                {/* Shield Badge */}
+                <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-brand-orange/10 border border-brand-orange/20 flex flex-col items-center justify-center text-brand-orange font-outfit shadow-sm group-hover:bg-brand-orange group-hover:text-white transition-all duration-500">
+                  <Award className="w-6 h-6 mb-0.5" />
+                  <span className="text-[10px] font-black leading-none">{w.period}</span>
                 </div>
-                <div>
-                  <h5 className="text-xs font-bold text-brand-dark dark:text-white">
-                    ISO 9001:2015 Certified
-                  </h5>
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                    Highest global standard of dental sterilization
+
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-outfit text-lg font-extrabold text-white group-hover:text-brand-orange transition-colors">
+                      {w.title}
+                    </h3>
+                    <span className="text-[9px] font-black text-brand-orange bg-brand-orange/10 px-2 py-0.5 rounded-full border border-brand-orange/20 uppercase tracking-widest leading-none">
+                      Warranty
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 font-semibold leading-relaxed">
+                    {w.coverage}
+                  </p>
+                  <p className="text-[10px] text-slate-400 font-medium italic">
+                    Chemical formulation: {w.chemicalType}
                   </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
 
         </div>

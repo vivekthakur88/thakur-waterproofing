@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "./ThemeContext";
-import { Sun, Moon, Menu, X, Sparkles } from "lucide-react";
+import { Sun, Moon, Menu, X, ShieldCheck } from "lucide-react";
+import { whatsappLink } from "@/config/whatsapp";
 
 interface NavLink {
   label: string;
@@ -11,11 +12,12 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
+  { label: "Before & After", href: "#before-after" },
   { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Doctors", href: "#doctors" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "How We Work", href: "#how-we-work" },
+  { label: "Projects", href: "#projects" },
+  { label: "Water Proofing", href: "#water-testing" },
+  { label: "Reviews", href: "#reviews" },
   { label: "FAQs", href: "#faq" },
 ];
 
@@ -74,8 +76,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "glass-panel shadow-glass py-4"
-          : "bg-transparent py-6 border-b border-transparent"
+          ? "glass-panel shadow-glass py-3"
+          : "bg-transparent py-5 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -85,25 +87,30 @@ export default function Navbar() {
           onClick={(e) => handleLinkClick(e, "#home")}
           className="flex items-center gap-2 group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-cyan-400 flex items-center justify-center text-white shadow-md transform group-hover:scale-105 transition-transform duration-300">
-            <Sparkles className="w-5 h-5 animate-pulse-slow" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-red-500 flex items-center justify-center text-white shadow-md transform group-hover:scale-105 transition-transform duration-300">
+            <ShieldCheck className="w-5 h-5 animate-pulse-slow" />
           </div>
-          <span className="font-serif text-2xl font-bold tracking-tight bg-gradient-to-r from-brand-dark via-slate-700 to-brand-blue dark:from-white dark:to-sky-400 bg-clip-text text-transparent">
-            Dentazone
-          </span>
+          <div className="flex flex-col">
+            <span className="font-sans text-xl font-extrabold tracking-tight text-brand-navy dark:text-white leading-none">
+              WATERPROOFING
+            </span>
+            <span className="font-sans text-xs font-bold text-brand-orange tracking-widest leading-none mt-1">
+              EXPERTS INDIA
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-brand-blue ${
+              className={`text-xs xl:text-sm font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-brand-orange ${
                 activeSection === link.href.replace("#", "")
-                  ? "text-brand-blue font-semibold"
-                  : "text-slate-600 dark:text-slate-300"
+                  ? "text-brand-orange font-bold"
+                  : "text-slate-700 dark:text-slate-300"
               }`}
             >
               {link.label}
@@ -122,13 +129,14 @@ export default function Navbar() {
             {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           </button>
 
-          {/* Appointment Button */}
+          {/* WhatsApp CTA Button */}
           <a
-            href="#appointment"
-            onClick={(e) => handleLinkClick(e, "#appointment")}
-            className="px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide text-white bg-gradient-to-r from-brand-dark to-slate-800 hover:from-brand-blue hover:to-cyan-500 shadow-md hover:shadow-lg dark:from-sky-500 dark:to-brand-blue dark:text-brand-dark dark:hover:from-white dark:hover:to-sky-300 transition-all duration-300 hover:-translate-y-0.5"
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-widest text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg transition-all duration-300 hover:-translate-y-0.5"
           >
-            Book Appointment
+            Free Inspection
           </a>
         </div>
 
@@ -153,20 +161,20 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 top-[72px] z-40 bg-white/95 dark:bg-brand-dark/95 backdrop-blur-md transition-all duration-500 lg:hidden flex flex-col items-center justify-center gap-8 ${
+        className={`fixed inset-0 top-[64px] z-40 bg-white/95 dark:bg-brand-navyDark/95 backdrop-blur-md transition-all duration-500 lg:hidden flex flex-col items-center justify-center gap-8 ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col items-center gap-6">
+        <nav className="flex flex-col items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-xl font-medium tracking-wide transition-colors duration-300 ${
+              className={`text-lg font-bold uppercase tracking-widest transition-colors duration-300 ${
                 activeSection === link.href.replace("#", "")
-                  ? "text-brand-blue font-bold"
-                  : "text-slate-800 dark:text-slate-200"
+                  ? "text-brand-orange"
+                  : "text-brand-navy dark:text-slate-200"
               }`}
             >
               {link.label}
@@ -175,11 +183,12 @@ export default function Navbar() {
         </nav>
 
         <a
-          href="#appointment"
-          onClick={(e) => handleLinkClick(e, "#appointment")}
-          className="px-8 py-3.5 rounded-full text-base font-semibold tracking-wide text-white bg-gradient-to-r from-brand-dark to-slate-800 dark:from-sky-500 dark:to-brand-blue dark:text-brand-dark shadow-md"
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-8 py-3.5 rounded-full text-sm font-extrabold uppercase tracking-widest text-white bg-brand-orange shadow-orange"
         >
-          Book Appointment
+          Free Inspection
         </a>
       </div>
     </header>

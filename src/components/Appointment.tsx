@@ -1,329 +1,104 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { toast } from "sonner";
-import { User, Phone, Mail, Calendar, MessageSquare, ShieldCheck, HelpCircle } from "lucide-react";
+import React from "react";
+import { MessageCircle, Camera, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+import { whatsappLink } from "@/config/whatsapp";
 
 export default function Appointment() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    treatment: "",
-    message: "",
-    honeypot: "", // Anti-spam honey-pot field
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    treatment: "",
-  });
-
-  const treatments = [
-    "Dental Implants",
-    "Root Canal Treatment",
-    "Teeth Whitening",
-    "Smile Makeover",
-    "Clear Aligners",
-    "Dental Braces",
-    "Kids Dentistry",
-    "Dental Veneers",
-    "Tooth Extraction",
-    "Gum Treatment",
+  const steps = [
+    {
+      title: "1. Snap Leakage Photos",
+      desc: "Take quick photos or videos of your terrace cracks, damp walls, or ceiling seepage.",
+      icon: Camera
+    },
+    {
+      title: "2. Send on WhatsApp",
+      desc: "Click any button on this website to instantly chat with our head waterproofing engineers.",
+      icon: MessageCircle
+    },
+    {
+      title: "3. Get Free Estimate",
+      desc: "Receive an immediate visual diagnostic analysis and a transparent, itemized repair quote.",
+      icon: CheckCircle2
+    }
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear validation error when typing
-    if (errors[name as keyof typeof errors]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = { name: "", phone: "", email: "", treatment: "" };
-
-    // Name check
-    if (!formData.name.trim()) {
-      newErrors.name = "Full Name is required";
-      isValid = false;
-    }
-
-    // Phone check (10 digits standard)
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone Number is required";
-      isValid = false;
-    } else if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid 10-digit phone number";
-      isValid = false;
-    }
-
-    // Email check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = "Email Address is required";
-      isValid = false;
-    } else if (!emailRegex.test(formData.email.trim())) {
-      newErrors.email = "Please enter a valid email address";
-      isValid = false;
-    }
-
-    // Treatment check
-    if (!formData.treatment) {
-      newErrors.treatment = "Please select a treatment type";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Anti-spam check
-    if (formData.honeypot) {
-      console.log("Spam detected!");
-      return;
-    }
-
-    if (!validateForm()) {
-      toast.error("Please correct the highlighted form errors.");
-      return;
-    }
-
-    setLoading(true);
-    toast.loading("Securing your luxury consultation slot...");
-
-    setTimeout(() => {
-      setLoading(false);
-      toast.dismiss();
-      toast.success("Details secured! Redirecting you to our direct WhatsApp...");
-
-      // Short delay for user to read toast before final FormSubmit + WhatsApp redirect
-      setTimeout(() => {
-        if (formRef.current) {
-          formRef.current.submit();
-        }
-      }, 1000);
-    }, 1500);
-  };
-
   return (
-    <section id="appointment" className="py-24 bg-white dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Form Details & High-End Copy */}
-          <div className="lg:col-span-5 space-y-8 text-left">
-            <div className="space-y-4">
-              <span className="text-sm font-bold uppercase tracking-wider text-brand-blue">
-                Priority Booking
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-dark dark:text-white leading-[1.15]">
-                Secure Your <br />
-                <span className="bg-gradient-to-r from-brand-blue to-cyan-500 bg-clip-text text-transparent">
-                  Luxury Slot
-                </span>
-              </h2>
+    <section id="appointment" className="py-24 bg-brand-lightBg dark:bg-brand-navyDark relative overflow-hidden border-t border-slate-200 dark:border-brand-navyLight">
+      {/* Visual background blurs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <div className="glass-panel p-8 sm:p-16 rounded-[48px] border border-slate-200 dark:border-brand-navyLight shadow-glass relative overflow-hidden text-center max-w-5xl mx-auto">
+          {/* Subtle decoration */}
+          <div className="absolute top-0 right-0 w-48 h-48 bg-brand-orange/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-orange/5 rounded-full blur-3xl" />
+
+          <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+            {/* Tagline */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider mx-auto">
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+              <span>Instant WhatsApp Diagnosis</span>
             </div>
-            
-            <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-              Schedule your dental diagnostic session today. Dentazone&apos;s appointment coordinators will secure your requested timing, evaluate initial details, and establish your personalized digital diagnosis plan instantly.
+
+            {/* Headline */}
+            <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-brand-navy dark:text-white leading-tight">
+              Send Your Leakage <br className="sm:hidden" />
+              <span className="bg-gradient-to-r from-brand-orange to-red-500 bg-clip-text text-transparent">Photos On WhatsApp</span>
+            </h2>
+
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 font-semibold max-w-2xl mx-auto">
+              Got cracks, dampness, or structural drips? Avoid expensive masonry breakdowns. Send us high-resolution photos of your leakage issues and let our chemical experts evaluate them instantly.
             </p>
 
-            <div className="space-y-6">
-              {[
-                { title: "Direct Contact Coordination", desc: "Instantly connected with our head implants coordinator.", icon: User },
-                { title: "No Extra Fees", desc: "No booking charges or upfront processing fees.", icon: ShieldCheck },
-                { title: "Immediate WhatsApp Booking", desc: "Redirects directly to WhatsApp chat for real-time slot selection.", icon: HelpCircle }
-              ].map((item, idx) => {
-                const Icon = item.icon;
+            {/* Simple Visual Step Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-left">
+              {steps.map((s, idx) => {
+                const IconComponent = s.icon;
                 return (
-                  <div key={idx} className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-brand-lightBlue/60 dark:bg-brand-blue/10 flex items-center justify-center text-brand-blue flex-shrink-0">
-                      <Icon className="w-5 h-5" />
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl bg-white dark:bg-brand-navy/60 border border-slate-200/50 dark:border-brand-navyLight hover:border-brand-orange/20 transition-all duration-300 flex flex-col gap-3 group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
+                      <IconComponent className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-brand-dark dark:text-white mb-1">
-                        {item.title}
+                      <h4 className="text-xs sm:text-sm font-extrabold text-brand-navy dark:text-white mb-1">
+                        {s.title}
                       </h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
-                        {item.desc}
+                      <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
+                        {s.desc}
                       </p>
                     </div>
                   </div>
                 );
               })}
             </div>
-          </div>
 
-          {/* Right Column: Working Appointment Form */}
-          <div className="lg:col-span-7 relative">
-            {/* Visual glow frame */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue to-cyan-400 opacity-10 rounded-[40px] blur-3xl z-0" />
-            
-            <div className="relative z-10 glass-panel p-8 sm:p-10 rounded-[38px] shadow-glass border border-slate-100 dark:border-slate-800">
-              
-              <form
-                ref={formRef}
-                action="https://formsubmit.co/vith84852@gmail.com"
-                method="POST"
-                onSubmit={handleSubmit}
-                className="space-y-6"
+            {/* Large WhatsApp Conversion Button */}
+            <div className="pt-6">
+              <a
+                href={`${whatsappLink}&text=Hi!%20I%20have%20attached%20photos%20of%20the%20active%20leakage%20at%20my%20property.%20Please%20examine%20them%20and%20provide%20a%20Free%20Waterproofing%20Inspection.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full text-sm font-extrabold uppercase tracking-widest text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg hover:scale-[1.03] active:scale-95 transition-all duration-300 relative group"
               >
-                {/* FormSubmit Config Parameters */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://wa.link/7oj64s" />
-                {/* Anti-spam honey-pot */}
-                <input
-                  type="text"
-                  name="honeypot"
-                  value={formData.honeypot}
-                  onChange={handleInputChange}
-                  style={{ display: "none" }}
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-
-                {/* Name */}
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-brand-dark dark:text-slate-300 uppercase tracking-wider block">
-                    Full Name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="e.g. Vivek Salunkhe"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className={`w-full py-3.5 pl-12 pr-4 text-sm rounded-2xl bg-white dark:bg-slate-900 border ${
-                        errors.name ? "border-red-500" : "border-slate-200 dark:border-slate-800"
-                      } focus:outline-none focus:border-brand-blue transition-colors duration-300`}
-                    />
-                  </div>
-                  {errors.name && <p className="text-red-500 text-[10px] font-bold">{errors.name}</p>}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Phone */}
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-dark dark:text-slate-300 uppercase tracking-wider block">
-                      Phone Number
-                    </label>
-                    <div className="relative">
-                      <Phone className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="e.g. 9970418588"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className={`w-full py-3.5 pl-12 pr-4 text-sm rounded-2xl bg-white dark:bg-slate-900 border ${
-                          errors.phone ? "border-red-500" : "border-slate-200 dark:border-slate-800"
-                        } focus:outline-none focus:border-brand-blue transition-colors duration-300`}
-                      />
-                    </div>
-                    {errors.phone && <p className="text-red-500 text-[10px] font-bold">{errors.phone}</p>}
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-brand-dark dark:text-slate-300 uppercase tracking-wider block">
-                      Email Address
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="e.g. name@example.com"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className={`w-full py-3.5 pl-12 pr-4 text-sm rounded-2xl bg-white dark:bg-slate-900 border ${
-                          errors.email ? "border-red-500" : "border-slate-200 dark:border-slate-800"
-                        } focus:outline-none focus:border-brand-blue transition-colors duration-300`}
-                      />
-                    </div>
-                    {errors.email && <p className="text-red-500 text-[10px] font-bold">{errors.email}</p>}
-                  </div>
-                </div>
-
-                {/* Treatment Type */}
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-brand-dark dark:text-slate-300 uppercase tracking-wider block">
-                    Treatment Type
-                  </label>
-                  <div className="relative">
-                    <Calendar className="absolute left-4 top-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
-                    <select
-                      name="treatment"
-                      value={formData.treatment}
-                      onChange={handleInputChange}
-                      className={`w-full py-3.5 pl-12 pr-4 text-sm rounded-2xl bg-white dark:bg-slate-900 border ${
-                        errors.treatment ? "border-red-500" : "border-slate-200 dark:border-slate-800"
-                      } focus:outline-none focus:border-brand-blue appearance-none transition-colors duration-300`}
-                    >
-                      <option value="">Select Treatment</option>
-                      {treatments.map((t, idx) => (
-                        <option key={idx} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
-                    {/* Custom Arrow */}
-                    <div className="absolute right-4 top-4.5 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-slate-400 pointer-events-none" />
-                  </div>
-                  {errors.treatment && <p className="text-red-500 text-[10px] font-bold">{errors.treatment}</p>}
-                </div>
-
-                {/* Message */}
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-brand-dark dark:text-slate-300 uppercase tracking-wider block">
-                    Message / Notes
-                  </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
-                    <textarea
-                      name="message"
-                      rows={3}
-                      placeholder="Specify dates, medical history, or details about your pain..."
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full py-3.5 pl-12 pr-4 text-sm rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand-blue transition-colors duration-300 resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-4 rounded-2xl text-center text-sm font-semibold tracking-wide text-white bg-gradient-to-r from-brand-dark to-slate-800 dark:from-sky-500 dark:to-brand-blue dark:text-brand-dark hover:shadow-lg dark:hover:from-white dark:hover:to-sky-300 hover:scale-[1.01] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading ? (
-                    <div className="w-5 h-5 rounded-full border-2 border-white dark:border-brand-dark border-t-transparent animate-spin" />
-                  ) : (
-                    <>
-                      <Calendar className="w-4 h-4" />
-                      Book Appointment Now
-                    </>
-                  )}
-                </button>
-              </form>
-
+                {/* Ping wave */}
+                <span className="absolute inset-0 rounded-full bg-brand-orange/20 animate-ping z-0 pointer-events-none" />
+                
+                <MessageCircle className="w-5.5 h-5.5 fill-white stroke-none relative z-10" />
+                <span className="relative z-10">Get Free Inspection</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              </a>
             </div>
-          </div>
 
+            {/* Sub-text */}
+            <p className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">
+              🛡️ No obligation check &bull; 100% Free visual diagnostic report &bull; Response within 15 mins
+            </p>
+          </div>
         </div>
       </div>
     </section>

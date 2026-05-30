@@ -16,7 +16,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Check local storage or system preference
-    const savedTheme = localStorage.getItem("dentazone-theme") as Theme;
+    const savedTheme = localStorage.getItem("waterproofing-theme") as Theme;
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     const initialTheme = savedTheme || systemTheme;
     
@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : "light";
     setTheme(nextTheme);
-    localStorage.setItem("dentazone-theme", nextTheme);
+    localStorage.setItem("waterproofing-theme", nextTheme);
     
     if (nextTheme === "dark") {
       document.documentElement.classList.add("dark");

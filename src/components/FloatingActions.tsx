@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { MessageSquare, Phone } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
+import { whatsappLink, contactPhone } from "@/config/whatsapp";
 
 export default function FloatingActions() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 200) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -21,46 +22,53 @@ export default function FloatingActions() {
 
   if (!isVisible) return null;
 
+  // Render a sticky double-CTA bar for mobile, and a premium floating widget for desktop
   return (
-    <div className="fixed inset-x-6 bottom-6 z-40 pointer-events-none flex justify-between items-center">
-      {/* Floating Call Button - Mobile Only - Bottom Left */}
-      <div className="pointer-events-auto block lg:hidden">
+    <>
+      {/* Desktop Floating WhatsApp Button - Visible on lg screens */}
+      <div className="fixed bottom-8 right-8 z-50 hidden md:block pointer-events-auto">
         <a
-          href="tel:9970418588"
-          className="w-14 h-14 rounded-full bg-brand-blue hover:bg-sky-500 text-white shadow-lg flex items-center justify-center transform active:scale-90 hover:scale-105 transition-all duration-300 relative group"
-          aria-label="Direct Phone Consultation"
-        >
-          {/* Subtle pulse background */}
-          <span className="absolute inset-0 rounded-full bg-brand-blue/30 animate-ping z-0" />
-          <Phone className="w-6 h-6 relative z-10" />
-          <span className="absolute left-16 bg-brand-dark text-white text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-            Call Dentist Now
-          </span>
-        </a>
-      </div>
-
-      {/* Spacer to push WhatsApp to the right on all viewports */}
-      <div className="flex-grow pointer-events-none" />
-
-      {/* Floating WhatsApp Button - Bottom Right */}
-      <div className="pointer-events-auto">
-        <a
-          href="https://wa.link/7oj64s"
+          href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-lg flex items-center justify-center transform active:scale-90 hover:scale-105 transition-all duration-300 relative group"
-          aria-label="WhatsApp Priority Support"
+          className="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_8px_30px_rgb(37,211,102,0.4)] flex items-center justify-center transform active:scale-95 hover:scale-110 transition-all duration-300 relative group"
+          aria-label="Waterproofing Priority WhatsApp"
         >
-          {/* Pulsating green ring */}
-          <span className="absolute inset-0 rounded-full bg-[#25D366]/30 animate-ping z-0" />
-          {/* Custom WhatsApp clean SVG or Lucide message icon */}
-          <MessageSquare className="w-6 h-6 relative z-10 fill-current" />
+          {/* Pulsating green wave */}
+          <span className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping z-0" />
           
-          <span className="absolute right-16 bg-brand-dark text-white text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-            WhatsApp Support
+          <MessageCircle className="w-8 h-8 relative z-10 fill-white stroke-none" />
+          
+          <span className="absolute right-20 bg-brand-navy text-white text-xs font-bold py-2 px-4 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 whitespace-nowrap pointer-events-none border border-slate-700">
+            💬 Chat with Expert
           </span>
         </a>
       </div>
-    </div>
+
+      {/* Sticky Mobile CTA Bar - Bottom Fixed - Visible only on mobile */}
+      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white/95 dark:bg-brand-navy/95 border-t border-slate-200 dark:border-brand-navyLight shadow-[0_-8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md px-4 py-3 animate-fade-in-up">
+        <div className="flex gap-3">
+          {/* Left CTA: Call Now */}
+          <a
+            href={`tel:${contactPhone.replace(/\s+/g, "")}`}
+            className="flex-1 flex items-center justify-center gap-2 bg-brand-navyLight border border-slate-300 dark:border-brand-navyLight dark:bg-brand-navyDark py-3 px-4 rounded-xl text-brand-navy dark:text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 active:scale-95"
+          >
+            <Phone className="w-4 h-4 text-brand-orange animate-pulse" />
+            Call Now
+          </a>
+
+          {/* Right CTA: Free Inspection on WhatsApp */}
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-[2] flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orangeHover py-3 px-4 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider shadow-orange transition-all duration-300 active:scale-95"
+          >
+            <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+            Free Inspection
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

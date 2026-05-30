@@ -3,18 +3,18 @@
 import React, { useState } from "react";
 import {
   Layers,
-  Shield,
-  Sparkles,
-  Crown,
+  Home,
   Grid,
-  Activity,
-  Heart,
-  Smile,
-  Scissors,
-  Zap,
+  Droplet,
+  Flame,
+  Paintbrush,
+  Sparkles,
   X,
-  Calendar,
+  MessageCircle,
+  ShieldCheck,
+  CheckCircle2
 } from "lucide-react";
+import { whatsappLink } from "@/config/whatsapp";
 
 interface Service {
   id: string;
@@ -22,178 +22,176 @@ interface Service {
   title: string;
   shortDesc: string;
   longDesc: string;
-  duration: string;
+  chemicals: string;
+  warranty: string;
   benefits: string[];
 }
 
 const servicesList: Service[] = [
   {
-    id: "implants",
+    id: "terrace",
     icon: Layers,
-    title: "Dental Implants",
-    shortDesc: "Permanent, premium titanium teeth replacements that match organic root structure.",
-    longDesc: "Dental implants represent the pinnacle of modern restorative dentistry. A medical-grade titanium screw is surgically embedded into the jawbone to act as an organic tooth root, supporting a flawless, customized ceramic crown that blends seamlessly with your natural teeth.",
-    duration: "2 - 3 Sessions (spread over healing time)",
-    benefits: ["Restores full chewing power", "Prevents bone loss in the jaw", "Matches look and feel of natural teeth", "Designed to last a lifetime"],
+    title: "Terrace Waterproofing",
+    shortDesc: "Premium multi-layer elastomeric coatings and PU membranes to seal leaky concrete slabs permanently.",
+    longDesc: "Terraces face direct thermal expansion and heavy rainfall. Our premium treatment includes deep concrete cleaning, crack filling, applying a fiber-mesh reinforced primer layer, and putting down multiple coats of high-elasticity polyurethane (PU) membrane that stretches up to 300% to withstand cracking.",
+    chemicals: "Dr. Fixit, Fosroc PU, Sika Elastomeric Membranes",
+    warranty: "10 - 15 Years",
+    benefits: ["Reinforced with high-tensile glass-fiber mesh", "Jointless, seamless, and elastomeric protective barrier", "Resists heavy ponding water for weeks", "Withstands extreme thermal weather stress"],
   },
   {
-    id: "rct",
-    icon: Shield,
-    title: "Root Canal Treatment",
-    shortDesc: "Painless single-sitting micro-endodontics to salvage severely infected teeth.",
-    longDesc: "Our state-of-the-art endodontics uses advanced rotary systems and digital mapping to clean, sanitize, and seal infected tooth pulp in a single sitting. The entire procedure is completed painlessly under local anesthesia, salvaging your natural tooth from extraction.",
-    duration: "1 Session (45 - 60 minutes)",
-    benefits: ["Saves your natural tooth", "Eliminates acute, thumping toothaches", "Virtually painless micro-surgical approach", "Prevents spread of deep jaw infections"],
+    id: "roof",
+    icon: Home,
+    title: "Roof Waterproofing",
+    shortDesc: "Robust shielding and pre-construction/post-construction heavy duty membrane barriers for structural roofs.",
+    longDesc: "Roofs bear the brunt of severe monsoons. We seal all expansion joints, drain pipes, and parapet wall corners using professional APP modified bituminous torch-on membranes or advanced liquid acrylic membranes, creating a completely impermeable umbrella over your building.",
+    chemicals: "APP Bituminous Membranes, Sika Liquid Acrylics",
+    warranty: "10+ Years",
+    benefits: ["Complete water impermeability", "Excellent adhesion to brick bat coba & concrete", "Parapet wall joint sealing included", "UV-resistant and flexible coatings"],
   },
   {
-    id: "whitening",
-    icon: Sparkles,
-    title: "Teeth Whitening",
-    shortDesc: "Advanced laser whitening system for a smile up to 8 shades brighter.",
-    longDesc: "Brighten your smile in under an hour with our clinically certified laser whitening system. We apply a protective barrier to your gums, followed by a medical-grade peroxide gel activated by a cold-blue light to break down deep organic stains safely.",
-    duration: "1 Session (45 minutes)",
-    benefits: ["Instantly brightens up to 8 shades", "Safe for enamel & sensitive teeth", "Long-lasting premium results", "Perfect before key events or weddings"],
-  },
-  {
-    id: "makeover",
-    icon: Crown,
-    title: "Smile Makeover",
-    shortDesc: "Bespoke digital smile design using luxury veneers and cosmetic alignment.",
-    longDesc: "A complete custom reconstruction combining composite bonding, laser gum contouring, and luxury porcelain crowns. We utilize 3D facial scans to draft a digital blueprint of your ideal smile shape, size, and shade before implementing the physical alterations.",
-    duration: "2 - 3 Sessions",
-    benefits: ["Corrects symmetry, chips, and spaces", "Matches individual facial proportions", "Boosts social confidence instantly", "Uses premium stain-resistant porcelain"],
-  },
-  {
-    id: "aligners",
+    id: "bathroom",
     icon: Grid,
-    title: "Clear Aligners",
-    shortDesc: "Invisible custom-molded digital aligners for comfortable teeth straightening.",
-    longDesc: "Straighten your teeth without wires or metal brackets. Our clear aligners are custom-printed thermoplastic trays constructed from precise 3D intraoral scans. They are virtually invisible, comfortable, and removable for eating, brushing, and flossing.",
-    duration: "6 - 18 Months (independent progress trays)",
-    benefits: ["100% invisible and comfortable", "Removable for meals and oral hygiene", "Fewer clinic visits required", "Predictable digital result tracking"],
+    title: "Bathroom Waterproofing",
+    shortDesc: "Non-destructive epoxy tiling grouting & sub-tile high-strength crystalline barrier protection.",
+    longDesc: "Bathroom leakage damages lower ceilings rapidly. We provide specialized non-destructive pressure injection grouting behind tiles and replace standard weak grout with high-strength anti-fungal epoxy grout. For new bathrooms, we apply a robust multi-coat acrylic waterproofing polymer layer below the tiles.",
+    chemicals: "Laticrete Epoxy Grout, Sika Topseal, Dr. Fixit Bathseal",
+    warranty: "7 - 10 Years",
+    benefits: ["Zero tile-breaking required (in standard cases)", "Anti-fungal, anti-bacterial waterproof epoxy grout", "Blocks internal pipe-sleeve moisture seepage", "Prevents paint peeling on lower-floor ceilings"],
   },
   {
-    id: "braces",
-    icon: Activity,
-    title: "Dental Braces",
-    shortDesc: "Precision self-ligating ceramic and metallic brackets for structural correction.",
-    longDesc: "Correct severe malocclusions, overbites, and misalignments using our modern low-friction orthodontic systems. We offer ultra-thin ceramic brackets that blend with tooth colors, and traditional stainless-steel brackets for durable corrections.",
-    duration: "12 - 24 Months",
-    benefits: ["Treats highly complex structural issues", "Improves long-term chewing and bite", "Creates permanent skeletal symmetry", "Cost-effective tooth straightening option"],
+    id: "watertank",
+    icon: Droplet,
+    title: "Water Tank Waterproofing",
+    shortDesc: "Certified food-grade non-toxic epoxy crystalline coatings for concrete drinking water tanks.",
+    longDesc: "Drinking water tanks require sterile, non-toxic waterproofing. We use crystal-growth active chemicals that penetrate deep into the concrete capillaries, sealing pores from the inside, followed by a hygienic 100% food-grade blue epoxy protective coating.",
+    chemicals: "Food-Grade Epoxy (Sika / Berger), Crystalline active sealers",
+    warranty: "10 Years",
+    benefits: ["100% non-toxic, safe for drinking water", "Prevents hazardous fungal & moss formation", "Resists strong hydrostatic water pressure", "Seals micro-pores and active honeycombs"],
   },
   {
-    id: "kids",
-    icon: Heart,
-    title: "Kids Dentistry",
-    shortDesc: "Gentle, anxiety-free pediatric dental checkups, sealants, and cavity care.",
-    longDesc: "Our pediatric specialists focus on building positive, warm relationships with young patients. We provide preventive fluoride applications, cavity-sealing pit/fissure sealants, and custom mouthguards in an environment designed to eliminate clinical anxiety.",
-    duration: "1 Session (30 minutes)",
-    benefits: ["Gentle, warm, and playful environment", "Prevents childhood tooth decay early", "Builds lifelong positive hygiene habits", "Monitors developing jaw structure"],
+    id: "wall",
+    icon: ShieldCheck,
+    title: "Wall Seepage Treatment",
+    shortDesc: "Capillary blocking chemical injections & dampness barrier structural coats for peeling plaster walls.",
+    longDesc: "Wall dampness leads to respiratory issues and unsightly mold. We strip the affected plaster, inject high-pressure damp-proof chemicals into the brickwork to block capillary action, apply crystalline plaster undercoats, and finish with structural primer that blocks saltpetre.",
+    chemicals: "Dr. Fixit Dampguard, Berger Latex Polymers",
+    warranty: "8 Years",
+    benefits: ["Blocks internal brickwork moisture travel", "Eliminates salty white powder (efflorescence)", "Creates perfect, dry base for fresh luxury paint", "Anti-fungal properties kill structural mold"],
   },
   {
-    id: "veneers",
-    icon: Smile,
-    title: "Dental Veneers",
-    shortDesc: "Ultra-thin custom porcelain shells that mask chips, gaps, and severe stains.",
-    longDesc: "A veneer is a micro-thin shell of high-end clinical porcelain bonded to the front of a tooth. It covers gaps, severe internal chemical staining, chips, and small misalignments, offering a flawless, bright appearance with minimal enamel reduction.",
-    duration: "2 Sessions",
-    benefits: ["Ultra-natural light reflection", "Extremely stain-resistant material", "Minimally invasive enamel prepping", "Perfects tooth color, shape, and length"],
+    id: "crack",
+    icon: WrenchIcon,
+    title: "Crack Filling",
+    shortDesc: "V-groove concrete repair using heavy-duty flexible polyurethane sealant injection techniques.",
+    longDesc: "Active crack movements quickly tear thin paints. Our process includes cutting open all structural cracks into V-grooves, treating with active rust-preventers if rebar is exposed, and filling them with heavy-duty, fast-curing polyurethane (PU) sealants that stay flexible forever.",
+    chemicals: "Sika Flex PU Sealants, Fosroc Conbextra Grout",
+    warranty: "5+ Years",
+    benefits: ["Withstands continuous structural vibration", "Permanently bonds to old concrete surfaces", "Non-shrinking, high-durability polymers", "Prevents oxygen and moisture reaching iron bars"],
   },
   {
-    id: "extraction",
-    icon: Scissors,
-    title: "Tooth Extraction",
-    shortDesc: "Atraumatic extraction of impacted wisdom teeth and non-restorable roots.",
-    longDesc: "Our oral surgeons utilize specialized atraumatic techniques to extract severely impacted wisdom teeth or broken roots. The procedure is performed under deep local anesthesia with specialized micro-instruments, minimizing trauma to the surrounding bone and gums.",
-    duration: "1 Session (30 - 45 minutes)",
-    benefits: ["Relieves acute wisdom tooth pressure", "Prevents crowding of adjacent teeth", "Micro-precision minimizes post-op swelling", "Quick healing and recovery protocol"],
+    id: "exterior",
+    icon: Paintbrush,
+    title: "Exterior Wall Protection",
+    shortDesc: "Weatherproof anti-carbonation coatings that resist heavy monsoon rains and UV peeling.",
+    longDesc: "Exterior walls are exposed to harsh monsoons and high temperatures. We seal hairline cracks and coat walls with premium elastomeric acrylic weathercoats that act as a high-build, rain-resistant, elastic raincoat, keeping interiors completely dry.",
+    chemicals: "Asian Paints SmartCare, Dulux Aquatech, Berger Weathercoat",
+    warranty: "10 Years",
+    benefits: ["Elastomeric paint bridges up to 2mm cracks", "Protects against structural carbonation damage", "Dust and dirt pick-up resistant technology", "Vibrant colors with high UV resistance"],
   },
   {
-    id: "gum",
-    icon: Zap,
-    title: "Gum Treatment",
-    shortDesc: "Advanced laser scaling, root planing, and micro-therapy for bleeding gums.",
-    longDesc: "Combat bleeding gums and bad breath with our deep scaling and laser-assisted periodontal treatments. We remove hardened tartar and bacteria deposits from deep beneath the gum line, stimulating healthy gum re-attachment and reversing early gingivitis.",
-    duration: "1 - 2 Sessions",
-    benefits: ["Stops chronic gum bleeding and bad breath", "Prevents loose teeth and bone damage", "Stimulates healthy tissue regeneration", "Advanced painless laser disinfection"],
+    id: "heatproof",
+    icon: Flame,
+    title: "Heatproof Coating",
+    shortDesc: "Dual-action thermal reflective coatings that prevent structural roof heating and water leakage.",
+    longDesc: "Save energy while preventing leakage! We apply advanced reflective ceramic glass micro-sphere coatings that reflect up to 90% of solar heat, dropping roof surface temperatures by up to 15°C, while acting as an excellent seamless waterproofing shield.",
+    chemicals: "Nippon Paint Cool-Coat, Asian Paints Damp Proof Cool",
+    warranty: "7 - 10 Years",
+    benefits: ["Reflects UV & IR rays back into atmosphere", "Reduces building interior AC bill by up to 20%", "Minimizes structural expansions & cracks", "Acts as an additional water-resistant top shield"],
   },
 ];
+
+function WrenchIcon(props: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+    >
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  );
+}
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-  const handleBookClick = () => {
-    setSelectedService(null);
-    const targetElement = document.getElementById("appointment");
-    if (targetElement) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = targetElement.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  const handleConsultClick = () => {
+    if (selectedService) {
+      const url = `${whatsappLink}&text=Hi!%20I%20am%20interested%20in%20your%20${encodeURIComponent(selectedService.title)}%20service.%20Please%20provide%20more%20details.`;
+      window.open(url, "_blank");
+      setSelectedService(null);
     }
   };
 
   return (
-    <section id="services" className="py-24 bg-slate-50 dark:bg-brand-dark">
+    <section id="services" className="py-24 bg-brand-lightBg dark:bg-brand-navy">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-sm font-bold uppercase tracking-wider text-brand-blue">
-            Our Specialties
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-dark dark:text-white">
-            World-Class Care, <br />
-            <span className="bg-gradient-to-r from-brand-blue to-cyan-500 bg-clip-text text-transparent">
-              Tailored For Your Smile
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Our Specialized Services</span>
+          </div>
+          <h2 className="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy dark:text-white leading-tight">
+            Comprehensive Leakage Stop <br />
+            <span className="bg-gradient-to-r from-brand-orange to-red-500 bg-clip-text text-transparent">Solutions For Your Property</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
-            From luxury smile designs to advanced implantology, experience painless, precise treatments in a serene environment.
+          <p className="text-base text-slate-500 dark:text-slate-400 font-medium">
+            From heavy-duty PU coatings on rooftops to precision capillary blockers inside damp walls, we protect your structure from foundation to roof.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {servicesList.map((service) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.id}
-                className="glass-card flex flex-col justify-between p-8 rounded-[32px] group relative overflow-hidden"
+                className="glass-card flex flex-col justify-between p-7 rounded-[28px] group relative overflow-hidden border border-slate-200 dark:border-brand-navyLight"
               >
                 {/* Visual hover background glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 dark:bg-brand-blue/10 rounded-full blur-2xl group-hover:bg-brand-blue/15 transition-colors duration-500 z-0" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 rounded-full blur-2xl group-hover:bg-brand-orange/10 transition-colors duration-500 z-0" />
 
-                <div className="relative z-10 space-y-6">
+                <div className="relative z-10 space-y-5">
                   {/* Icon */}
-                  <div className="w-12 h-12 rounded-2xl bg-brand-lightBlue/60 dark:bg-brand-blue/10 border border-brand-blue/10 flex items-center justify-center text-brand-blue shadow-sm group-hover:scale-110 group-hover:bg-brand-blue group-hover:text-white transition-all duration-500">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange shadow-sm group-hover:scale-115 group-hover:bg-brand-orange group-hover:text-white transition-all duration-500">
                     <IconComponent className="w-5.5 h-5.5" />
                   </div>
 
                   {/* Title & Desc */}
-                  <div className="space-y-3">
-                    <h3 className="font-serif text-xl font-bold text-brand-dark dark:text-white group-hover:text-brand-blue transition-colors duration-300">
+                  <div className="space-y-2">
+                    <h3 className="font-outfit text-lg font-extrabold text-brand-navy dark:text-white group-hover:text-brand-orange transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
                       {service.shortDesc}
                     </p>
                   </div>
                 </div>
 
                 {/* Learn More Button */}
-                <div className="relative z-10 pt-6 mt-6 border-t border-slate-100 dark:border-slate-800/80">
+                <div className="relative z-10 pt-5 mt-5 border-t border-slate-200 dark:border-brand-navyLight">
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="text-xs font-bold uppercase tracking-wider text-brand-dark dark:text-sky-400 group-hover:text-brand-blue flex items-center gap-1.5 transition-colors duration-300"
+                    className="text-xs font-bold uppercase tracking-widest text-brand-navy dark:text-brand-orange hover:text-brand-orange flex items-center gap-1.5 transition-colors duration-300"
                   >
-                    Learn More
+                    Technical Spec
                     <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                       →
                     </span>
@@ -210,60 +208,66 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-brand-navyDark/85 backdrop-blur-sm"
             onClick={() => setSelectedService(null)}
           />
 
           {/* Modal Content */}
-          <div className="relative z-10 w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800 animate-fade-in-up">
+          <div className="relative z-10 w-full max-w-2xl bg-white dark:bg-brand-navy rounded-[32px] overflow-hidden shadow-2xl border border-slate-200 dark:border-brand-navyLight animate-fade-in-up">
             
-            {/* Header image/color accent */}
-            <div className="h-4 bg-gradient-to-r from-brand-blue via-cyan-400 to-brand-blue" />
+            {/* Header color accent */}
+            <div className="h-4 bg-gradient-to-r from-brand-orange via-red-500 to-brand-orange" />
             
             {/* Close Button */}
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-8 right-8 w-10 h-10 rounded-full border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300"
+              className="absolute top-8 right-8 w-10 h-10 rounded-full border border-slate-200 dark:border-brand-navyLight flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-brand-navyLight transition-colors duration-300"
             >
               <X className="w-4 h-4" />
             </button>
 
             <div className="p-8 sm:p-10 space-y-6 max-h-[85vh] overflow-y-auto">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-brand-lightBlue/60 dark:bg-brand-blue/10 border border-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <div className="w-14 h-14 rounded-2xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange">
                   {React.createElement(selectedService.icon, { className: "w-6 h-6" })}
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-brand-blue">
-                    Treatment Details
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-orange">
+                    TECHNICAL DATA SHEET
                   </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-brand-dark dark:text-white">
+                  <h3 className="font-outfit text-2xl sm:text-3xl font-extrabold text-brand-navy dark:text-white leading-tight">
                     {selectedService.title}
                   </h3>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">
                   {selectedService.longDesc}
                 </p>
                 
-                {/* Duration */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  <span className="text-brand-blue">Estimated duration:</span>
-                  {selectedService.duration}
+                {/* Meta details */}
+                <div className="flex flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-brand-navyLight text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span className="text-brand-orange">Chemical Brand:</span>
+                    {selectedService.chemicals}
+                  </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-brand-navyLight text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span className="text-brand-orange">Written Warranty:</span>
+                    {selectedService.warranty}
+                  </div>
                 </div>
               </div>
 
               {/* Benefits */}
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Clinical Benefits
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400">
+                  Key Structural Benefits
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700 dark:text-slate-300">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700 dark:text-slate-300 font-semibold">
                   {selectedService.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue flex-shrink-0" />
+                    <li key={idx} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -271,16 +275,16 @@ export default function Services() {
               </div>
 
               {/* Action */}
-              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Have questions? Speak to our orthodontists and implants coordinators directly.
+              <div className="pt-6 border-t border-slate-200 dark:border-brand-navyLight flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  Facing this specific leakage? Book a free on-site chemical inspection today.
                 </p>
                 <button
-                  onClick={handleBookClick}
-                  className="px-6 py-3 rounded-full text-center text-sm font-semibold tracking-wide text-white bg-gradient-to-r from-brand-dark to-slate-800 dark:from-sky-500 dark:to-brand-blue dark:text-brand-dark flex items-center justify-center gap-2"
+                  onClick={handleConsultClick}
+                  className="px-6 py-3.5 rounded-full text-center text-xs font-extrabold uppercase tracking-widest text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange flex items-center justify-center gap-2"
                 >
-                  <Calendar className="w-4 h-4" />
-                  Book Free Consultation
+                  <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                  Inquire Now
                 </button>
               </div>
 

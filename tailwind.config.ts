@@ -11,11 +11,15 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#0B1325", // Luxury Deep Blue/Charcoal
-          slate: "#1E293B",
-          blue: "#0EA5E9",  // Clinical Blue
-          lightBlue: "#E0F2FE", // Soft contrast blue
-          gold: "#D4AF37", // Elegant gold highlight
+          navy: "#0A192F",       // Premium Deep Navy Blue
+          navyLight: "#172A45",  // Lighter Navy Blue for cards
+          navyDark: "#020C1B",   // Ultra Dark Navy for sections
+          orange: "#FF6B00",     // Bright Waterproofing Orange CTA
+          orangeHover: "#E05E00",// Deep Orange CTA Hover
+          slate: "#64748B",      // Cool Slate Gray for text
+          lightSlate: "#CCD6F6", // Light Slate for text highlights
+          lightBg: "#F8FAFC",    // Clean Off-White background
+          accentBlue: "#00B4D8", // Water-blue secondary accents
         },
       },
       animation: {
@@ -23,6 +27,7 @@ const config: Config = {
         "fade-in-up": "fadeInUp 0.8s ease-out forwards",
         "fade-in-right": "fadeInRight 0.8s ease-out forwards",
         "infinite-scroll": "infiniteScroll 40s linear infinite",
+        "wave-flow": "waveFlow 8s linear infinite",
       },
       keyframes: {
         fadeInUp: {
@@ -37,11 +42,17 @@ const config: Config = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        waveFlow: {
+          "0%": { transform: "translateX(0) translateZ(0) scaleY(1)" },
+          "50%": { transform: "translateX(-25%) translateZ(0) scaleY(0.8)" },
+          "100%": { transform: "translateX(-50%) translateZ(0) scaleY(1)" },
+        }
       },
       boxShadow: {
-        glass: "0 8px 32px 0 rgba(15, 23, 42, 0.08)",
-        "glass-dark": "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
-        gold: "0 0 15px rgba(212, 175, 55, 0.2)",
+        glass: "0 8px 32px 0 rgba(10, 25, 47, 0.08)",
+        "glass-dark": "0 8px 32px 0 rgba(2, 12, 27, 0.5)",
+        orange: "0 4px 20px rgba(255, 107, 0, 0.35)",
+        "orange-lg": "0 10px 25px rgba(255, 107, 0, 0.5)",
       },
     },
   },

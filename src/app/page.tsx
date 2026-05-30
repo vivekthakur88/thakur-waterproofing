@@ -5,63 +5,71 @@ import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
-import About from "@/components/About";
+import BeforeAfter from "@/components/BeforeAfter";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Doctors from "@/components/Doctors";
-import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
-import Appointment from "@/components/Appointment";
+import WaterTesting from "@/components/WaterTesting";
+import Testimonials from "@/components/Testimonials";
+import About from "@/components/About";
+import CoverageArea from "@/components/CoverageArea";
 import FAQ from "@/components/FAQ";
+import Appointment from "@/components/Appointment";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
 export default function Home() {
   return (
     <>
-      {/* Sonner Toast alerts positioned top-right for accessibility */}
+      {/* Sonner Toast alerts for interactive elements */}
       <Toaster position="top-right" richColors closeButton duration={4000} />
 
       {/* Floating CTA shortcuts (WhatsApp & Phone calls) */}
       <FloatingActions />
 
-      {/* Sticky Luxury Navbar */}
+      {/* Sticky Waterproofing Navbar */}
       <Navbar />
 
-      {/* Main clinical content grid */}
+      {/* Main landing content container */}
       <main className="relative overflow-x-hidden min-h-screen">
-        {/* Fullscreen Hero */}
+        {/* SECTION 1 — HERO */}
         <Hero />
 
-        {/* Dynamic Count-Up Stats */}
+        {/* SECTION 2 — TRUST BAR */}
         <Stats />
 
-        {/* Clinical Mission & Pillars */}
-        <About />
+        {/* SECTION 3 — BEFORE & AFTER SHOWCASE */}
+        <BeforeAfter />
 
-        {/* 10 Specialties & Detail Modal */}
+        {/* SECTION 4 — SERVICES */}
         <Services />
 
-        {/* 8 Patient Philosophy Matrix */}
+        {/* SECTION 5 — HOW WE WORK */}
         <WhyChooseUs />
 
-        {/* Specialist Doctor Profiles */}
-        <Doctors />
-
-        {/* Infinite Reviews Marquee */}
-        <Testimonials />
-
-        {/* Masonry Picture Gallery & Lightbox */}
+        {/* SECTION 6 — PROJECT GALLERY */}
         <Gallery />
 
-        {/* Fully Working FormSubmit.co Booking Form */}
-        <Appointment />
+        {/* SECTION 7 — WATER TESTING PROOF */}
+        <WaterTesting />
 
-        {/* Collapsible Accordion FAQs */}
+        {/* SECTION 8 — CUSTOMER REVIEWS */}
+        <Testimonials />
+
+        {/* SECTION 9 — WARRANTY SECTION */}
+        <About />
+
+        {/* SECTION 10 — COVERAGE AREA */}
+        <CoverageArea />
+
+        {/* SECTION 11 — FAQ */}
         <FAQ />
+
+        {/* SECTION 12 — FINAL CTA */}
+        <Appointment />
       </main>
 
-      {/* 4-Column Luxury Footer & Google Map */}
+      {/* SECTION 13 — FOOTER */}
       <Footer />
     </>
   );

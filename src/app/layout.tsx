@@ -16,31 +16,34 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Dentazone | Premium Multispeciality Dental Care Thane",
-  description: "Experience luxury dental treatments at Dentazone Thane West. Advanced dental implants, painless root canals, teeth whitening, clear aligners, and personalized Apple-level dental care.",
-  metadataBase: new URL("https://dentazone.in"),
+  title: "Waterproofing Experts | No.1 Leakage Solutions India",
+  description: "Get permanent, professional waterproofing solutions for your terraces, roofs, bathrooms, damp walls, and water tanks. Certified chemical and membrane treatments with 10+ Years Warranty. Book your Free Visual Inspection today!",
+  metadataBase: new URL("https://waterproofingexperts.in"),
   keywords: [
-    "dental clinic thane",
-    "luxury dental clinic thane",
-    "dentazone thane",
-    "best dentist in thane west",
-    "painless root canal thane",
-    "clear aligners thane",
-    "dental implants thane west",
-    "teeth whitening clinic thane"
+    "waterproofing services mumbai",
+    "terrace waterproofing thane",
+    "professional waterproofing contract pune",
+    "wall seepage treatment",
+    "roof leakage repairs",
+    "water tank waterproofing india",
+    "bathroom leakage solutions",
+    "waterproofing contractor thane",
+    "roof crack filling services",
+    "damp walls permanent repair",
+    "waterproofing expert bangalore"
   ],
-  authors: [{ name: "Dentazone Clinic" }],
+  authors: [{ name: "Waterproofing Experts" }],
   openGraph: {
-    title: "Dentazone | Premium Multispeciality Dental Care",
-    description: "Advanced luxury dental care with a personalized, painless approach. Book your same-day smile makeover today.",
+    title: "Waterproofing Experts | Professional Leakage Repairs & Prevention",
+    description: "Premium waterproofing services for roofs, terraces, bathrooms, and walls. 100% permanent leakage stop with a multi-year warranty and a fully certified expert team.",
     type: "website",
     locale: "en_IN",
-    siteName: "Dentazone Dental Clinic",
+    siteName: "Waterproofing Experts",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dentazone | Premium Multispeciality Dental Care",
-    description: "Experience high-tech painless dentistry at Thane's premium luxury clinic.",
+    title: "Waterproofing Experts | Professional Waterproofing Contractors India",
+    description: "Stop structural water leakage before it destroys your home. Premium terrace, wall, and tank waterproofing with a certified professional team.",
   },
 };
 
@@ -49,19 +52,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Structured JSON-LD Schema Markup for Local Business SEO optimization
+  // Structured JSON-LD Schema Markup for local HomeAndConstructionBusiness SEO optimization
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Dentazone - Advanced Multispeciality Dental Care",
-    "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
-    "@id": "https://www.google.com/maps/place/Dentazone/",
-    "url": "https://www.google.com/maps/place/Dentazone/",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Waterproofing Experts - Professional Leakage Solutions",
+    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800",
+    "@id": "https://waterproofingexperts.in",
+    "url": "https://waterproofingexperts.in",
     "telephone": "+919970418588",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Shop No. 6, Advanced Multispeciality Dental Care, Wadhwa Elite, 19, Kolshet Rd, Sandoz Baug, Thane West",
+      "streetAddress": "Shop No. 6, Wadhwa Elite, 19, Kolshet Road, Sandoz Baug, Thane West",
       "addressLocality": "Thane",
       "addressRegion": "Maharashtra",
       "postalCode": "400607",
@@ -75,20 +78,13 @@ export default function RootLayout({
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "10:00",
-        "closes": "14:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "17:30",
-        "closes": "21:30"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "21:00"
       }
     ],
     "sameAs": [
-      "https://www.instagram.com/dentazone_advanceddentalcare/",
-      "https://wa.link/7oj64s"
+      "https://wa.me/919970418588"
     ]
   };
 
