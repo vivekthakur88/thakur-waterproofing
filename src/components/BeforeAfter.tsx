@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HelpCircle, Sparkles, MessageCircle } from "lucide-react";
 import { whatsappLink } from "@/config/whatsapp";
-import { images } from "@/config/media";
 
 interface ProjectItem {
   id: string;

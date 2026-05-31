@@ -56,6 +56,16 @@ const galleryItems: GalleryItem[] = [
     title: "Premium Waterproofing Treatment — Completed",
     location: "Mumbai, Maharashtra"
   },
+  {
+    id: 4,
+    url: "/images/pic3.jpeg",
+    thumbnail: "/images/pic3.jpeg",
+    isVideo: false,
+    category: "bathroom",
+    categoryLabel: "Bathroom Waterproofing",
+    title: "High-End Tile & Floor Leakage Protection",
+    location: "Mumbai, Maharashtra"
+  },
 ];
 
 export default function Gallery() {
