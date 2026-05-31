@@ -132,8 +132,7 @@ export default function Services() {
 
   const handleConsultClick = () => {
     if (selectedService) {
-      const url = `${whatsappLink}&text=Hi!%20I%20am%20interested%20in%20your%20${encodeURIComponent(selectedService.title)}%20service.%20Please%20provide%20more%20details.`;
-      window.open(url, "_blank");
+      window.open(whatsappLink, "_blank");
       setSelectedService(null);
     }
   };

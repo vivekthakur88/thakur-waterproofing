@@ -9,6 +9,7 @@ import BeforeAfter from "@/components/BeforeAfter";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Gallery from "@/components/Gallery";
+import VideoShowcase from "@/components/VideoShowcase";
 import WaterTesting from "@/components/WaterTesting";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
@@ -50,7 +51,10 @@ export default function Home() {
         {/* SECTION 6 — PROJECT GALLERY */}
         <Gallery />
 
-        {/* SECTION 7 — WATER TESTING PROOF */}
+        {/* SECTION 7 — SITE DEMONSTRATIONS & VIDEO SHOWCASE */}
+        <VideoShowcase />
+
+        {/* SECTION 8 — WATER TESTING PROOF */}
         <WaterTesting />
 
         {/* SECTION 8 — CUSTOMER REVIEWS */}

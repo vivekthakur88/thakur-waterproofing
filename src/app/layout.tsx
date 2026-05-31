@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
+import { whatsappLink, phone1, phone1Display, companyName } from "@/config/whatsapp";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,34 +17,33 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Waterproofing Experts | No.1 Leakage Solutions India",
-  description: "Get permanent, professional waterproofing solutions for your terraces, roofs, bathrooms, damp walls, and water tanks. Certified chemical and membrane treatments with 10+ Years Warranty. Book your Free Visual Inspection today!",
-  metadataBase: new URL("https://waterproofingexperts.in"),
+  title: "THAKUR WATERPROOFING | Stop Roof Leakage — Professional Solutions",
+  description: "Thakur Waterproofing provides permanent, professional waterproofing solutions for terraces, roofs, bathrooms, damp walls, and water tanks. Expert team with quality materials and long-lasting protection. Get a Free Inspection today!",
   keywords: [
+    "Thakur Waterproofing",
     "waterproofing services mumbai",
-    "terrace waterproofing thane",
-    "professional waterproofing contract pune",
+    "terrace waterproofing",
+    "professional waterproofing contractor",
     "wall seepage treatment",
     "roof leakage repairs",
-    "water tank waterproofing india",
+    "water tank waterproofing",
     "bathroom leakage solutions",
-    "waterproofing contractor thane",
-    "roof crack filling services",
+    "roof crack filling",
     "damp walls permanent repair",
-    "waterproofing expert bangalore"
+    "heatproof coating"
   ],
-  authors: [{ name: "Waterproofing Experts" }],
+  authors: [{ name: "Thakur Waterproofing" }],
   openGraph: {
-    title: "Waterproofing Experts | Professional Leakage Repairs & Prevention",
-    description: "Premium waterproofing services for roofs, terraces, bathrooms, and walls. 100% permanent leakage stop with a multi-year warranty and a fully certified expert team.",
+    title: "THAKUR WATERPROOFING | Professional Leakage Repairs & Prevention",
+    description: "Premium waterproofing services for roofs, terraces, bathrooms, and walls. 100% permanent leakage stop with multi-year warranty and certified professional team.",
     type: "website",
     locale: "en_IN",
-    siteName: "Waterproofing Experts",
+    siteName: "Thakur Waterproofing",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Waterproofing Experts | Professional Waterproofing Contractors India",
-    description: "Stop structural water leakage before it destroys your home. Premium terrace, wall, and tank waterproofing with a certified professional team.",
+    title: "THAKUR WATERPROOFING | Professional Waterproofing Contractors",
+    description: "Stop roof leakage before it damages your home. Expert waterproofing for terraces, roofs, walls, bathrooms and water tanks. Call now for a free inspection!",
   },
 };
 
@@ -56,18 +56,16 @@ export default function RootLayout({
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "Waterproofing Experts - Professional Leakage Solutions",
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800",
-    "@id": "https://waterproofingexperts.in",
-    "url": "https://waterproofingexperts.in",
-    "telephone": "+919970418588",
+    "name": "Thakur Waterproofing",
+    "image": "/images/pic5.jpeg",
+    "telephone": phone1,
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Shop No. 6, Wadhwa Elite, 19, Kolshet Road, Sandoz Baug, Thane West",
-      "addressLocality": "Thane",
+      "streetAddress": "Thakur Waterproofing",
+      "addressLocality": "Mumbai",
       "addressRegion": "Maharashtra",
-      "postalCode": "400607",
+      "postalCode": "",
       "addressCountry": "IN"
     },
     "geo": {
@@ -84,7 +82,7 @@ export default function RootLayout({
       }
     ],
     "sameAs": [
-      "https://wa.me/919970418588"
+      whatsappLink
     ]
   };
 

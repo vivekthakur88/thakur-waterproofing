@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HelpCircle, Sparkles, MessageCircle } from "lucide-react";
 import { whatsappLink } from "@/config/whatsapp";
+import { images } from "@/config/media";
 
 interface ProjectItem {
   id: string;
@@ -21,35 +22,35 @@ const projects: ProjectItem[] = [
     title: "Terrace Leakage",
     problem: "Rainwater ponding and structural micro-cracks causing ceiling dampness.",
     solution: "Multi-layer elastomeric PU membrane coating with glass-fiber reinforcement.",
-    beforeImg: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800", // Cracked/wet floor tile
-    afterImg: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800", // Smooth clean modern coating
+    beforeImg: "/images/pic1.jpeg",
+    afterImg: "/images/pic2.jpeg",
     details: "100% water ponding test passed. Underwent 10-year warranty certification."
-  },
-  {
-    id: "wall",
-    title: "Wall Seepage",
-    problem: "Groundwater capillary action and paint peeling with white efflorescence.",
-    solution: "High-strength epoxy injection with polymer-modified structural plaster seal.",
-    beforeImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800", // Peeling drywall / dirty wall
-    afterImg: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=800", // Pristine newly painted luxury wall
-    details: "Dampness levels reduced from 95% to < 5% within 48 hours of treatment."
   },
   {
     id: "roof",
     title: "Roof Cracks",
     problem: "Thermal expansion causing deep structural concrete cracks & active drips.",
     solution: "V-groove cutting, polyurethane sealant filling, and heavy duty topcoat.",
-    beforeImg: "https://images.unsplash.com/photo-1595844730298-b959547b69fc?auto=format&fit=crop&q=80&w=800", // Concrete cracks
-    afterImg: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800", // Premium sealed concrete surface
+    beforeImg: "/images/pic1.jpeg",
+    afterImg: "/images/pic5.jpeg",
     details: "Reinforced joints withstand severe thermal stress and structural shifting."
+  },
+  {
+    id: "wall",
+    title: "Wall Seepage",
+    problem: "Groundwater capillary action and paint peeling with white efflorescence.",
+    solution: "High-strength epoxy injection with polymer-modified structural plaster seal.",
+    beforeImg: "/images/pic2.jpeg",
+    afterImg: "/images/pic6.jpeg",
+    details: "Dampness levels reduced from 95% to < 5% within 48 hours of treatment."
   },
   {
     id: "bathroom",
     title: "Bathroom Leakage",
     problem: "Weak tile grout and pipe joint leaks destroying lower floor ceilings.",
     solution: "Non-destructive epoxy grout treatment & sub-tile waterproofing barrier.",
-    beforeImg: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&q=80&w=800", // Damaged tile grout/mold
-    afterImg: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800", // Spotless luxurious tiles
+    beforeImg: "/images/pic1.jpeg",
+    afterImg: "/images/pic2.jpeg",
     details: "Stopped leakage permanently without breaking single designer marble tile."
   },
   {
@@ -57,8 +58,8 @@ const projects: ProjectItem[] = [
     title: "Water Tank Leakage",
     problem: "Concrete tank cracks leaking water & encouraging algae/bacteria growth.",
     solution: "Food-grade non-toxic epoxy crystalline coating and joint sealing.",
-    beforeImg: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800", // Dirty rusty water tank / damp concrete
-    afterImg: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&q=80&w=800", // Clean sterile water tank surface
+    beforeImg: "/images/pic2.jpeg",
+    afterImg: "/images/pic5.jpeg",
     details: "Approved drinking-water safe crystal coatings with lifetime organic protection."
   }
 ];
@@ -222,7 +223,7 @@ export default function BeforeAfter() {
                 {/* Instant WhatsApp Inquiry for this specific leakage */}
                 <div className="pt-4">
                   <a
-                    href={`${whatsappLink}&text=Hi!%20I'm%20facing%20${encodeURIComponent(activeProject.title)}%20leakage%20issues%20at%20my%20property.%20I%20would%20like%20to%20get%20a%20Free%20Waterproofing%20Inspection.`}
+                    href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-xs font-extrabold uppercase tracking-wider text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg hover:scale-[1.02] active:scale-95 transition-all duration-300"

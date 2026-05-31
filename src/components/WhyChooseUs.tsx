@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider">
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Our Engineered Process</span>
@@ -66,6 +66,30 @@ export default function WhyChooseUs() {
             We follow a strictly engineered, multi-step quality assurance framework to identify, treat, and certify every project.
           </p>
         </div>
+
+        {/* Trust Highlights Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {[
+            { icon: "👷", label: "Expert Waterproofing Team" },
+            { icon: "💰", label: "Affordable Pricing" },
+            { icon: "🏆", label: "Quality Materials" },
+            { icon: "🛡️", label: "Long Lasting Protection" },
+            { icon: "⚡", label: "Fast Service" },
+            { icon: "🔍", label: "Free Inspection" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-white dark:bg-brand-navyLight border border-slate-200 dark:border-brand-navyLight hover:border-brand-orange/30 hover:-translate-y-1 transition-all duration-300 text-center group"
+            >
+              <span className="text-2xl">{item.icon}</span>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange flex-shrink-0" />
+                <span className="text-[11px] font-bold text-brand-navy dark:text-slate-300 leading-tight">{item.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
 
         {/* Process Timeline Layout */}
         <div className="relative">

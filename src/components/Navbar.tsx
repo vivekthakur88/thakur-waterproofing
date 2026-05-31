@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "./ThemeContext";
-import { Sun, Moon, Menu, X, ShieldCheck } from "lucide-react";
-import { whatsappLink } from "@/config/whatsapp";
+import { Sun, Moon, Menu, X, ShieldCheck, Phone } from "lucide-react";
+import { whatsappLink, phone1Display, phone2Display, phone1, phone2 } from "@/config/whatsapp";
 
 interface NavLink {
   label: string;
@@ -16,7 +16,7 @@ const navLinks: NavLink[] = [
   { label: "Services", href: "#services" },
   { label: "How We Work", href: "#how-we-work" },
   { label: "Projects", href: "#projects" },
-  { label: "Water Proofing", href: "#water-testing" },
+  { label: "Videos", href: "#video-showcase" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQs", href: "#faq" },
 ];
@@ -29,10 +29,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle navbar background on scroll
       setIsScrolled(window.scrollY > 20);
 
-      // Track active section for navigation styling
       const sections = navLinks.map(link => link.href.replace("#", ""));
       const currentScroll = window.scrollY + 100;
 
@@ -59,7 +57,7 @@ export default function Navbar() {
     const targetId = href.replace("#", "");
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      const offset = 80; // Height of sticky navbar
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = targetElement.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -77,9 +75,24 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "glass-panel shadow-glass py-3"
-          : "bg-transparent py-5 border-b border-transparent"
+          : "bg-transparent py-4 border-b border-transparent"
       }`}
     >
+      {/* Top contact bar */}
+      <div className={`border-b border-brand-orange/20 transition-all duration-300 ${isScrolled ? "hidden" : "block"}`}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-1.5 flex items-center justify-end gap-6 text-xs font-semibold text-slate-300">
+          <a href={`tel:${phone1}`} className="flex items-center gap-1.5 hover:text-brand-orange transition-colors">
+            <Phone className="w-3 h-3" />
+            {phone1Display}
+          </a>
+          <span className="text-slate-600">|</span>
+          <a href={`tel:${phone2}`} className="flex items-center gap-1.5 hover:text-brand-orange transition-colors">
+            <Phone className="w-3 h-3" />
+            {phone2Display}
+          </a>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <a
@@ -92,16 +105,16 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="font-sans text-xl font-extrabold tracking-tight text-brand-navy dark:text-white leading-none">
-              WATERPROOFING
+              THAKUR
             </span>
-            <span className="font-sans text-xs font-bold text-brand-orange tracking-widest leading-none mt-1">
-              EXPERTS INDIA
+            <span className="font-sans text-xs font-bold text-brand-orange tracking-widest leading-none mt-0.5">
+              WATERPROOFING
             </span>
           </div>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -119,11 +132,20 @@ export default function Navbar() {
         </nav>
 
         {/* Action Buttons */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Phone quick dial */}
+          <a
+            href={`tel:${phone1}`}
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-orange hover:text-brand-orange transition-all duration-300"
+          >
+            <Phone className="w-3.5 h-3.5" />
+            Call Now
+          </a>
+
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors duration-300"
+            className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors duration-300"
             aria-label="Toggle Theme"
           >
             {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -134,7 +156,7 @@ export default function Navbar() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-widest text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-widest text-white bg-brand-orange hover:bg-brand-orangeHover shadow-orange hover:shadow-orange-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             Free Inspection
           </a>
@@ -142,6 +164,9 @@ export default function Navbar() {
 
         {/* Mobile Nav Button */}
         <div className="flex items-center gap-3 lg:hidden">
+          <a href={`tel:${phone1}`} className="w-9 h-9 rounded-full bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange">
+            <Phone className="w-4 h-4" />
+          </a>
           <button
             onClick={toggleTheme}
             className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300"
@@ -161,7 +186,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 top-[64px] z-40 bg-white/95 dark:bg-brand-navyDark/95 backdrop-blur-md transition-all duration-500 lg:hidden flex flex-col items-center justify-center gap-8 ${
+        className={`fixed inset-0 top-[64px] z-40 bg-white/95 dark:bg-brand-navyDark/95 backdrop-blur-md transition-all duration-500 lg:hidden flex flex-col items-center justify-center gap-6 ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
@@ -182,14 +207,29 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-8 py-3.5 rounded-full text-sm font-extrabold uppercase tracking-widest text-white bg-brand-orange shadow-orange"
-        >
-          Free Inspection
-        </a>
+        {/* Mobile contact buttons */}
+        <div className="flex flex-col items-center gap-3 w-full px-8">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full px-8 py-3.5 rounded-full text-sm font-extrabold uppercase tracking-widest text-white bg-brand-orange shadow-orange text-center"
+          >
+            💬 Chat on WhatsApp
+          </a>
+          <a
+            href={`tel:${phone1}`}
+            className="w-full px-8 py-3.5 rounded-full text-sm font-bold border border-slate-300 dark:border-slate-700 text-brand-navy dark:text-white text-center flex items-center justify-center gap-2"
+          >
+            <Phone className="w-4 h-4" /> {phone1Display}
+          </a>
+          <a
+            href={`tel:${phone2}`}
+            className="w-full px-8 py-3.5 rounded-full text-sm font-bold border border-slate-300 dark:border-slate-700 text-brand-navy dark:text-white text-center flex items-center justify-center gap-2"
+          >
+            <Phone className="w-4 h-4" /> {phone2Display}
+          </a>
+        </div>
       </div>
     </header>
   );

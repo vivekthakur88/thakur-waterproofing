@@ -4,20 +4,23 @@
  * across all sections of the waterproofing website.
  */
 
-// Central WhatsApp link. Replaces the destination number or message as desired.
-export const whatsappLink = "https://wa.me/919970418588?text=Hi!%20I'm%20interested%20in%20getting%20a%20Free%20Waterproofing%20Inspection%20for%20my%20property.%20Please%20contact%20me.";
+// Re-export from central config for backward compatibility
+export { whatsappLink, companyName, phone1, phone2, phone1Display, phone2Display } from "./website";
 
-// Primary display phone number
-export const contactPhone = "+91 99704 18588";
+// Primary display phone number (keep for backward compat)
+export const contactPhone = "+91 88778 99355";
+
+// Secondary phone number
+export const contactPhone2 = "+91 95077 85879";
 
 // Display email address
-export const contactEmail = "info@waterproofingexperts.in";
+export const contactEmail = "rajeevthakur9720@gmail.com";
 
 // Business address details for schema and display
 export const businessAddress = {
-  street: "Shop No. 6, Wadhwa Elite, 19, Kolshet Road, Sandoz Baug, Thane West",
-  city: "Thane",
+  street: "Thakur Waterproofing",
+  city: "Mumbai",
   state: "Maharashtra",
-  postalCode: "400607",
+  postalCode: "",
   country: "India"
 };

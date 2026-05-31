@@ -14,8 +14,8 @@ const config: Config = {
           navy: "#0A192F",       // Premium Deep Navy Blue
           navyLight: "#172A45",  // Lighter Navy Blue for cards
           navyDark: "#020C1B",   // Ultra Dark Navy for sections
-          orange: "#FF6B00",     // Bright Waterproofing Orange CTA
-          orangeHover: "#E05E00",// Deep Orange CTA Hover
+          orange: "#7619b4ff",     // Bright Waterproofing Orange CTA
+          orangeHover: "#3511d3ff",// Deep Orange CTA Hover
           slate: "#64748B",      // Cool Slate Gray for text
           lightSlate: "#CCD6F6", // Light Slate for text highlights
           lightBg: "#F8FAFC",    // Clean Off-White background
