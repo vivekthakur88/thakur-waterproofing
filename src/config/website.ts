@@ -17,23 +17,33 @@ export const phone1Display = "+91 88778 99355";
 export const phone2Display = "+91 95077 85879";
 export const email = "rajeevthakur9720@gmail.com";
 
+/**
+ * Cloudinary CDN base URL.
+ * Replace YOUR_CLOUD_NAME with your actual Cloudinary cloud name
+ * after signing up at https://cloudinary.com
+ * Example: if your cloud name is "thakurwp", set:
+ *   const CLOUDINARY_BASE = "https://res.cloudinary.com/thakurwp";
+ */
+const CLOUDINARY_BASE = "https://res.cloudinary.com/YOUR_CLOUD_NAME";
+
 export const images = {
-  before1: "/images/pic1",
-  after1: "/images/pic2",
-  hero: "/images/pic5",
-  gallery1: "/images/pic6"
+  before1: `${CLOUDINARY_BASE}/image/upload/q_auto,f_auto/waterproofing/pic1`,
+  after1: `${CLOUDINARY_BASE}/image/upload/q_auto,f_auto/waterproofing/pic2`,
+  hero: `${CLOUDINARY_BASE}/image/upload/q_auto,f_auto/waterproofing/pic5`,
+  gallery1: `${CLOUDINARY_BASE}/image/upload/q_auto,f_auto/waterproofing/pic6`,
 };
 
 export const videos = {
-  hero: "/videos/vid1",
-  showcase1: "/videos/vid2",
-  showcase2: "/videos/vid3",
-  showcase3: "/videos/vid4",
-  showcase4: "/videos/vid5"
+  hero: `${CLOUDINARY_BASE}/video/upload/q_auto/waterproofing/vid1`,
+  showcase1: `${CLOUDINARY_BASE}/video/upload/q_auto/waterproofing/vid2`,
+  showcase2: `${CLOUDINARY_BASE}/video/upload/q_auto/waterproofing/vid3`,
+  showcase3: `${CLOUDINARY_BASE}/video/upload/q_auto/waterproofing/vid4`,
+  showcase4: `${CLOUDINARY_BASE}/video/upload/q_auto/waterproofing/vid5`,
 };
 
 /**
- * Utility helper to append the correct image extension (.jpeg)
+ * Utility helper — returns full Cloudinary URL with .jpeg extension
+ * Falls back to raw path if already a full URL or has extension.
  */
 export function getImageUrl(path: string): string {
   if (!path) return "";
@@ -42,7 +52,8 @@ export function getImageUrl(path: string): string {
 }
 
 /**
- * Utility helper to append the correct video extension (.mp4)
+ * Utility helper — returns full Cloudinary URL with .mp4 extension
+ * Falls back to raw path if already a full URL or has extension.
  */
 export function getVideoUrl(path: string): string {
   if (!path) return "";

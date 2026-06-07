@@ -6,6 +6,23 @@
 .pnp.js
 .yarn/install-state.gz
 
+# Large media files — host externally (Cloudinary) instead
+/public/videos/*.mp4
+/public/videos/*.webm
+/public/images/projects/*.jpeg
+/public/images/projects/*.jpg
+/public/images/projects/*.png
+/public/images/team/*.jpeg
+/public/images/team/*.jpg
+/public/images/team/*.png
+
+# Duplicate media files accidentally placed in root
+/*.mp4
+/*.webm
+/*.jpeg
+/*.jpg
+/*.png
+
 # testing
 /coverage
 
