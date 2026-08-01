@@ -68,10 +68,10 @@ export default function Hero() {
             animate="visible"
           >
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] lg:aspect-auto lg:h-[600px]">
-              {/* Main professional waterproofing image */}
+              {/* Professional waterproofing service image */}
               <img
-                src={images.hero}
-                alt="THAKUR WATERPROOFING professional at work"
+                src="/images/raj_thakur.jpeg"
+                alt="THAKUR WATERPROOFING professional"
                 className="w-full h-full object-cover object-center"
               />
               {/* Overlay gradient for blending */}
