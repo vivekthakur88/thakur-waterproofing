@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, MessageCircle, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { whatsappLink, phone1, phone2, phone1Display, phone2Display } from "@/config/whatsapp";
-import { videos, images } from "@/config/media";
+import { videos } from "@/config/media";
 
 export default function Hero() {
   const containerVariants = {
