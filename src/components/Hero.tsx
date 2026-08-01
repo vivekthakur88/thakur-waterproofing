@@ -70,10 +70,13 @@ export default function Hero() {
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] lg:aspect-auto lg:h-[600px]">
               {/* Professional waterproofing service image */}
               <img
-                src="/images/raj_thakur.jpeg"
-                alt="THAKUR WATERPROOFING professional"
+                src="/vivek_p.jpeg"
+                alt="VIVEK THAKUR"
                 className="w-full h-full object-cover object-center"
               />
+              <div className="absolute inset-0 flex items-end justify-center pb-4 pointer-events-none z-20">
+                <span className="text-white text-lg font-bold bg-black/40 px-2 py-1 rounded">VIVEK THAKUR</span>
+              </div>
               {/* Overlay gradient for blending */}
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navyDark/60 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-brand-navyDark/20" />
